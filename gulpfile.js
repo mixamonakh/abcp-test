@@ -52,17 +52,6 @@ gulp.task('scripts', function(){
         .pipe(browserSync.reload({stream: true}))
 });
 
-// собираем библиотеки и минифицируем
-gulp.task('libs', function(){
-    return gulp.src([
-        // 'app/libs/jquery/dist/jquery.min.js',
-        'app/libs/swiper/swiper.min.js'
-    ])
-    .pipe(concat('libs.min.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('app/js'))
-});
-
 // следим за изменениями html
 gulp.task('code', function(){
     return gulp.src('app/*.html')
@@ -170,8 +159,8 @@ gulp.task('watch', function(){
     gulp.watch(['app/panini/pages/**/*.html', 'app/panini/layouts/**/*.html', 'app/panini/partials/**/*.html', 'app/panini/data/**/*.json'], gulp.series('panini'));
 });
 
-gulp.task('default', gulp.parallel( 'panini', 'copy-foundation', 'scss', 'css-nano', 'libs', 'img', 'browser-sync', 'watch'));
-gulp.task('build', gulp.series('clean', 'css-nano', 'uncss', 'prebuild', 'libs'));
+gulp.task('default', gulp.parallel( 'panini', 'copy-foundation', 'scss', 'css-nano', 'img', 'browser-sync', 'watch'));
+gulp.task('build', gulp.series('clean', 'css-nano', 'uncss', 'prebuild'));
 
 
 

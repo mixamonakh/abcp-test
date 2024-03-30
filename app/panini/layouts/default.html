@@ -7,48 +7,17 @@
     <title>{{ title }}</title>
     <meta name="description" content="{{ description }}">
 
-    <link rel="preload" href="css/fonts.css" as="style">
-    <link rel="preload" href="css/libs-preload.min.css" as="style">
-    <link rel="preload" href="js/libs.min.js" as="script">
-    <link rel="preload" href="js/script.js" as="script">
-
-    <link rel="stylesheet" href="css/kit-style.min.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.min.css">
-
-{{#ifpage 'index'}}
-    {{> opengraph}}
-{{/ifpage}}
 </head>
 
-<body>
-{{#ifpage 'index'}}
-    {{> header}}
-{{/ifpage}}
-{{#ifpage '404'}}
-    {{> header_error}}
-{{/ifpage}}
+<body class="{{ page-name }}">
 
-    <main class="{{ napravlenie }}">
-    {{#ifpage 'index'}}
-        {{> first-screen}}
-        <div class="container">
-            {{> body}}
-        </div>
-        {{> accordion}}
-        {{> review}}
-    {{/ifpage}}
-    {{#ifpage '404'}}
-        {{> first-screen-error}}
-    {{/ifpage}}
+    <main>
+        {{> body}}
     </main>
-{{#ifpage 'index'}}
-    {{> footer }}
-    {{> loadscripts }}
-    {{> schema }}
-{{/ifpage}}
-{{#ifpage '404'}}
-    {{> loadscripts }}
-{{/ifpage}}
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>
